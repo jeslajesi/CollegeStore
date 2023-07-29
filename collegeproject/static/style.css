@@ -1,0 +1,161 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+}
+
+body{
+    overflow: scroll;
+    background-color: #0c0f38;
+    height: 100vh;
+}
+
+body::-webkit-scrollbar{
+    display: none;
+}
+
+/* Navbar */
+
+.nav-links{
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.nav-links:hover {
+    color: #e6e6e6;
+}
+
+/* Block content  */
+
+.block-content {
+    opacity: 0;
+    animation: fadeInUp 1s forwards;
+    margin: 10%;
+    overflow-x: hidden;
+}
+
+@media (max-width: 767px){
+    .block-content{
+        margin: 20% 5%;
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Banner */
+
+.banner_main {
+    background: #0c0f38;
+}
+
+.banner_main h1{
+    font-size: 10vh;
+}
+
+.banner_main p{
+    font-size: 3.5vh;
+}
+
+.banner_main a{
+    padding: 3% 5%;
+    font-size: 3.5vh;
+    background: #484d986d;
+    text-decoration: none;
+    color: #fff;
+    transition: transform 0.3s ease-in-out;
+}
+
+.banner_main a:hover{
+    background: #484d98bb;
+}
+
+.banner_main img{
+    width: 90%;
+}
+
+/* Login */
+
+.form-wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-wrap form{
+    background-color: #ffffff11;
+    padding: 5%;
+    width: 80%;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 767px){
+    .form-wrap form{
+        width: 40%;
+    }
+}
+
+.form-wrap h1{
+    text-align: center;
+}
+
+.form-wrap label{
+    display: block;
+    margin-top: 30px;
+    margin-bottom: 5px;
+}
+
+.input-wrap{
+    border-bottom: 1px solid #fff;
+}
+
+.input-wrap input{
+    background: none;
+    border: none;
+    padding: 2%;
+    outline: none;
+    width: 100%;
+}
+
+.form-wrap button{
+    margin: 30px 0;
+    padding: 2% 4%;
+    width: 100%;
+    background-color: #0c0f40;
+    border: none;
+    outline: none;
+}
+
+.form-wrap p{
+    text-align: center;
+}
+
+.form-wrap a{
+    text-decoration: none;
+    color: #2047c6;
+    font-weight: 600;
+}
+
+select option {
+    background-color: #0c0f40; /* Change the background color to your desired color */
+}
+
+input[type="number"]::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+}
+
+.dropdown-toggle.show{
+    color: #fb9451;
+}

@@ -1,0 +1,33 @@
+{% extends 'Home.html' %}
+
+{% block content %}
+
+<div class="form-wrap">
+    <form method="post">
+        {% csrf_token %}
+        <h1>Register</h1>
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                <p class="text-bg-danger text-center">{{message}}</p>
+            {% else %}
+                <p class="text-bg-success text-center">{{message}}</p>
+            {% endif %}
+        {% endfor %}
+        <label>Username</label>
+        <div class="input-wrap">
+            <input type="text" name="username">
+        </div>
+        <label>Password</label>
+        <div class="input-wrap">
+            <input type="password" name="password">
+        </div>
+        <label>Confirm Password</label>
+        <div class="input-wrap">
+            <input type="password" name="password2">
+        </div>
+        <button>Submit</button>
+        <p>Already have account? <a href="{% url 'login' %}">Login</a></p>
+    </form>
+</div>
+
+{% endblock %}

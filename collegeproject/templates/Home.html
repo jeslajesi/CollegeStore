@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Store</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <!-- Bootstrap CSS  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body style="background-color: #0c0f38;">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top px-5 py-3" style="background: rgb(6, 16, 65);">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'index' %}">
+            <img src="{% static 'images/logo.png' %}" width="120px">
+          </a>
+          <button class="navbar-toggler border-white bg-light " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              {% if request.user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-links text-capitalize " style="color: #fb9451;">
+                  {{request.user}}
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-links" href="{% url 'logout' %}">
+                  Logout
+                </a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-links" href="{% url 'login' %}" {% if request.resolver_match.url_name == 'login' %} style="color: #fb9451;" {% endif %}>
+                  Login
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-links" href="{% url 'register' %}"  {% if request.resolver_match.url_name == 'register' %} style="color: #fb9451;" {% endif %}>
+                  Register
+                </a>
+              </li>
+              {% endif %}
+              <li class="nav-item dropdown">
+                <a class="nav-links dropdown-toggle text-capitalize" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Department
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% for i in dep %}
+                    <li><a class="dropdown-item" href="{{i.link}}">{{i.name}}</a></li>
+                    {% endfor %}
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="block-content">
+          {% block content %}
+          <section class="banner_main">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-5 mb-5 ">
+                    <h1>College Store<br> Many Products</h1>
+                    <p>"Let us remember: One book, one pen, one child and one teacher can change the world."</p>
+                    <a href="{% url 'person' %}">Get Started</a>
+                  </div>
+                  <div class="col-md-7">
+                      <figure><img src="{% static 'images/img.png' %}" /></figure>
+                  </div>
+               </div>
+            </div>
+         </section>
+          {% endblock %}
+      </div>
+      
+    
+    <script src="{% static 'main.js' %}"></script>
+    <!-- Bootstrap JS  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
